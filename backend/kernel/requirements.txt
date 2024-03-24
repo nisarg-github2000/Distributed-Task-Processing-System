@@ -1,0 +1,11 @@
+fastapi==0.88.0
+pydantic==1.10.2
+databases[asyncpg]==0.6.2
+aiohttp==3.8.3
+loguru==0.6.0
+uvicorn==0.20.0
+pytest==7.2.1
+httpx==0.23.1
+boto3==1.17.0
+requests-toolbelt==0.10.1
+aiobotocore==1.4.2

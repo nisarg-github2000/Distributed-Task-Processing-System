@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kernel
+  namespace: ds-kernel
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: ds-kernel
+          image: 501833808881.dkr.ecr.us-east-1.amazonaws.com/kernel:v2
+          ports:
+            - containerPort: 8082
+          envFrom:
+            - secretRef:
+                name: ds-backend-secret

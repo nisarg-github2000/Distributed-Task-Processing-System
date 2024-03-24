@@ -1,0 +1,41 @@
+version: '3.1'
+
+services:
+
+  data-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: data-service:v1
+    #    entrypoint: "tail -F whatever"
+    entrypoint: uvicorn main:app --host 0.0.0.0 --port 9393 --reload
+    ports:
+      - 9393:9393
+    volumes:
+      - ./main.py:/app/main.py
+      - ./requirements.txt:/app/requirements.txt
+      - ./:/app/
+    depends_on:
+      - mongo-db
+    environment:
+      DB_URL: mongodb://root:example@mongo-db:27017/
+      DB_NAME: jobs_database
+    env_file:
+      - .env
+
+  mongo-db:
+    image: mongo
+    restart: always
+    container_name: mongo-db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+      # MONGO_INITDB_DATABASE: jobs_database
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data:/data/db
+
+volumes:
+  data:
+    driver: local

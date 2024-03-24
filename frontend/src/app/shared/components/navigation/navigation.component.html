@@ -1,0 +1,28 @@
+<div class="deznav">
+  <div class="deznav-scroll" [perfectScrollbar]>
+    <ul class="metismenu" id="menu" metis-menu>
+      <li><a class="ai-icon" [routerLink]="['/']" aria-expanded="false">
+          <!-- <i class="flaticon-381-networking"></i> -->
+          <span class="nav-text">Marketplace</span>
+        </a>
+        <a class="ai-icon" [routerLink]="['/my-projects']" aria-expanded="false">
+          <!-- <i class="flaticon-381-networking"></i> -->
+          <span class="nav-text">My Projects</span>
+        </a>
+        <a class="ai-icon" [routerLink]="['/my-transactions']" aria-expanded="false">
+          <!-- <i class="flaticon-381-networking"></i> -->
+          <span class="nav-text">My Transactions</span>
+        </a>
+        <a class="ai-icon" [routerLink]="['/my-funded-projects']" aria-expanded="false">
+          <!-- <i class="flaticon-381-networking"></i> -->
+          <span class="nav-text">My Funding Projects</span>
+        </a>
+        <a class="ai-icon" [routerLink]="['/requests']" aria-expanded="false"
+          *ngIf="authService.currentUser.role=='admin'">
+          <!-- <i class="flaticon-381-networking"></i> -->
+          <span class="nav-text">User Requests</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

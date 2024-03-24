@@ -1,0 +1,11 @@
+.status-completed {
+  color: green;
+}
+
+.status-failed {
+  color: red;
+}
+
+.status-running {
+  color: orange;
+}

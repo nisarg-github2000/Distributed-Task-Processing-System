@@ -1,0 +1,13 @@
+pydantic
+odmantic
+fastapi
+uvicorn
+fastapi-pagination
+fastapi-utils
+loguru
+boto3
+urllib3
+dnspython
+orjson
+requests
+pydantic-factories

@@ -1,0 +1,35 @@
+version: "2.3"
+
+services:
+
+  api:
+    build:
+      context: .
+    #      dockerfile: Dockerfile
+    image: kernel:latest
+    working_dir: /app
+    container_name: kernel-api
+    command: uvicorn main:app --host 0.0.0.0 --port 8082 --reload
+    volumes:
+      - ./main.py:/app/main.py
+      - ./requirements.txt:/app/requirements.txt
+      - ./:/app/
+    ports:
+      - 5766:8082
+    env_file:
+      - .env
+  # performance-test-master:
+  #   image: locustio/locust
+  #   ports:
+  #     - "8089:8089"
+  #   volumes:
+  #     - ./:/mnt/locust
+  #   command: -f /mnt/locust/load_testing.py --master --html /mnt/locust/stats.html --headless --run-time 100s -H https://inference-kernelv3dev.mlinfra.thinkdeeply.com --spawn-rate 2 --users 100
+  #   env_file:
+  #     - .env
+
+  # performance-test-worker1:
+  #   image: locustio/locust
+  #   volumes:
+  #     - ./:/mnt/locust
+  #   command: -f /mnt/locust/load_testing.py --worker --master-host performance-test-master

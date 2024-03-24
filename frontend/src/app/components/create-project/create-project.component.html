@@ -1,0 +1,35 @@
+<button class="btn-primary btn" (click)="open(createProject)"> Create Task</button>
+<ng-template #createProject let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Create Task</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="createProjectForm">
+      <div class="row">
+        <div class="col">
+          <label for="title">Job Name: </label>
+          <input id="title" type="text" class="form-control" formControlName="job_name">
+        </div>
+      </div>
+      <div class="row mb-1">
+        <div class="col">
+          <label for="description">Description: </label>
+          <textarea id="description" type="text" class="form-control" rows="4" formControlName="description"></textarea>
+        </div>
+      </div>
+      <div class="row mb-1">
+        <div class="col">
+          <label for="funding_goal">Estimated Time: </label>
+          <input id="funding_goal" type="number" class="form-control" formControlName="estimated_time">
+        </div>
+      </div>
+    </form>
+
+  </div>
+  <div class="d-flex flex-row-reverse mb-3 mr-5">
+    <button class="btn-primary btn btn-sm" (click)="submit()" [disabled]="createProjectForm.invalid">Submit</button>
+  </div>
+</ng-template>

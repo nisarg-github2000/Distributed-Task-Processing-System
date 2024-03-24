@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: data-service
+  namespace: ds-data-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: ds-data-service
+          image: 501833808881.dkr.ecr.us-east-1.amazonaws.com/data-service:v2
+          ports:
+            - containerPort: 9393
+          envFrom:
+            - secretRef:
+                name: ds-backend-secret
