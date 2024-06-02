@@ -27,3 +27,5 @@ nodeGroups:
     instanceType: t2.medium
     desiredCapacity: 1
     privateNetworking: true
+
+#kubernetes cluster t2 used
