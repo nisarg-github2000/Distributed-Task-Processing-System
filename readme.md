@@ -1,6 +1,6 @@
-# Distributed Task Processing System
+# Cloud-based Distributed Task Processing System
 
-The Distributed Task Processing System is designed to efficiently process and manage tasks across distributed systems, leveraging the power of containerized services for scalability and flexibility. This system integrates a backend API, a data service, worker services for task processing, and an Angular-based front-end application for user interaction.
+The Cloud-based Distributed Task Processing System is designed to efficiently process and manage tasks across distributed systems, leveraging the power of containerized services for scalability and flexibility. This system integrates a backend API, a data service, worker services for task processing, and an Angular-based front-end application for user interaction.
 
 ## Prerequisites
 
