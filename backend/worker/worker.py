@@ -34,18 +34,18 @@ class StandardQueueWorker(Worker):
     def start(self):
         sqs_client = boto3.client("sqs")
 
-        # Get the URL of the SQS queue
+        #Get the URL of the SQS queue
         response = sqs_client.get_queue_url(QueueName=self.queue_name)
         sqs_queue_url = response["QueueUrl"]
         logger.info(f"sqs_queue_url: {sqs_queue_url}")
 
         while not self.stop_listening:
             try:
-                # Receive messages from the SQS queue
+                #Receive messages from the SQS queue
                 response = sqs_client.receive_message(
                     QueueUrl=sqs_queue_url,
                     MaxNumberOfMessages=1,
-                    WaitTimeSeconds=20,  # Long polling - wait up to 20 seconds for a message
+                    WaitTimeSeconds=20,  #Long polling - wait up to 20 seconds for a message
                 )
                 if "Messages" in response:
                     for msg in response["Messages"]:
